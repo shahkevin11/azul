@@ -8,6 +8,8 @@ import { AIPlayer } from './ai/AIPlayer.js';
 import { Renderer } from './ui/Renderer.js';
 import { ToastNotifications } from './ui/ToastNotifications.js';
 import { SoundManager } from './audio/SoundManager.js';
+import { AssetLoader } from './ui/AssetLoader.js';
+import { ThemeManager } from './ui/ThemeManager.js';
 import { registerVariant, listVariants } from './variants/VariantRegistry.js';
 import { ClassicAzulConfig } from './variants/ClassicAzul.js';
 import { SummerPavilionConfig } from './variants/SummerPavilion.js';
@@ -17,6 +19,8 @@ class AzulApp {
     this.state = null;
     this.renderer = null;
     this.toast = null;
+    this.assetLoader = null;
+    this.themeManager = null;
     this.currentView = 'lobby'; // 'lobby' | 'game'
     this.aiThinking = false;
     this.gameConfig = {
@@ -32,9 +36,29 @@ class AzulApp {
     registerVariant(SummerPavilionConfig);
   }
 
-  init() {
+  async init() {
     SoundManager.init();
     this.toast = new ToastNotifications();
+
+    // Initialize asset management
+    this.assetLoader = new AssetLoader();
+    this.themeManager = new ThemeManager(this.assetLoader);
+
+    // Preload assets with progress bar
+    try {
+      await this.assetLoader.preloadAll((loaded, total) => {
+        const fill = document.getElementById('loading-bar-fill');
+        if (fill) fill.style.width = `${(loaded / total) * 100}%`;
+        const text = document.getElementById('loading-text');
+        if (text) text.textContent = `Loading assets... ${loaded}/${total}`;
+      });
+
+      // Apply theme (sets CSS custom properties with loaded image URLs)
+      this.themeManager.applyTheme();
+    } catch (e) {
+      // Assets failed to load — continue with CSS fallback
+      console.warn('Asset loading failed, using CSS fallback:', e);
+    }
 
     // Check for join link
     const params = new URLSearchParams(window.location.search);
@@ -65,10 +89,16 @@ class AzulApp {
   }
 
   buildLobbyHTML() {
+    // Use logo image if available, fallback to text
+    const logoUrl = this.themeManager?.getUrl('UI', 'logo');
+    const logoHtml = logoUrl
+      ? `<img class="lobby__logo-img" src="${logoUrl}" alt="AZUL" draggable="false">`
+      : `<h1 class="lobby__title">AZUL</h1>`;
+
     return `
       <div class="lobby" id="lobby">
         <div class="lobby__header">
-          <h1 class="lobby__title">AZUL</h1>
+          ${logoHtml}
           <p class="lobby__subtitle">Portuguese Tile Game</p>
           <div class="lobby__tiles-decor">
             <div class="tile tile--blue"></div>
@@ -236,7 +266,7 @@ class AzulApp {
     const app = document.getElementById('app');
     app.innerHTML = this.buildGameHTML();
 
-    this.renderer = new Renderer(this);
+    this.renderer = new Renderer(this, this.themeManager);
     this.render();
 
     SoundManager.play('roundEnd');

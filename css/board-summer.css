@@ -9,6 +9,10 @@
   max-width: 380px;
   aspect-ratio: 1;
   margin: 0 auto;
+  background-image: var(--summer-star-board-bg);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .star-group {
@@ -66,10 +70,17 @@
   align-items: center;
   justify-content: center;
   font-size: 0.5rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
+body.images-loaded .decoration--pillar { background-image: url('../assets/summer/decoration-pillar.svg'); }
+body.images-loaded .decoration--statue { background-image: url('../assets/summer/decoration-statue.svg'); }
+body.images-loaded .decoration--window { background-image: url('../assets/summer/decoration-window.svg'); }
+
 .decoration--complete {
-  background: var(--accent-gold);
+  background-color: var(--accent-gold);
   color: var(--bg-primary);
 }
 

@@ -50,6 +50,50 @@
   --shadow-md: 0 4px 12px rgba(0,0,0,0.4);
   --shadow-lg: 0 8px 24px rgba(0,0,0,0.5);
   --shadow-glow: 0 0 12px rgba(201, 168, 76, 0.4);
+
+  /* Image asset variables (set dynamically by ThemeManager.js) */
+  --tile-blue-img: none;
+  --tile-yellow-img: none;
+  --tile-red-img: none;
+  --tile-black-img: none;
+  --tile-white-img: none;
+  --tile-first-player-img: none;
+  --tile-purple-img: none;
+  --tile-green-img: none;
+  --tile-orange-img: none;
+  --tile-summer-yellow-img: none;
+  --tile-summer-blue-img: none;
+  --tile-summer-red-img: none;
+  --tile-wild-glow-img: none;
+
+  /* Background images */
+  --bg-image-game: none;
+  --bg-image-lobby: none;
+  --bg-pattern-tile: none;
+  --bg-overlay-texture: none;
+
+  /* Frame images */
+  --frame-factory: none;
+  --frame-board: none;
+  --frame-panel: none;
+  --frame-center-pool: none;
+  --frame-score-bar: none;
+  --frame-divider: none;
+
+  /* UI images */
+  --ui-logo: none;
+  --ui-icon-settings: none;
+  --ui-icon-crown: none;
+  --ui-icon-arrow: none;
+  --ui-btn-start-bg: none;
+  --ui-tile-slot-empty: none;
+  --ui-tile-slot-legal: none;
+  --ui-tile-selected-glow: none;
+  --ui-floor-penalty: none;
+  --ui-round-banner: none;
+
+  /* Summer Pavilion images */
+  --summer-star-board-bg: none;
 }
 
 @media (min-width: 768px) {

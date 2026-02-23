@@ -6,10 +6,12 @@
   flex-direction: column;
   align-items: center;
   padding: 24px var(--section-padding);
-  background: var(--bg-primary);
-  background-image:
+  background-color: var(--bg-primary);
+  background-image: var(--bg-image-lobby),
     radial-gradient(ellipse at 20% 50%, rgba(21,101,192,0.08) 0%, transparent 50%),
     radial-gradient(ellipse at 80% 20%, rgba(201,168,76,0.06) 0%, transparent 50%);
+  background-size: cover, auto, auto;
+  background-position: center;
   overflow-y: auto;
 }
 
@@ -304,4 +306,21 @@
   font-size: 0.8rem;
   color: var(--text-muted);
   text-decoration: underline;
+}
+
+/* Logo image (replaces text title when images loaded) */
+.lobby__logo-img {
+  max-width: 280px;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+/* Panel frame decoration when images loaded */
+body.images-loaded .lobby__panel {
+  border-image: var(--frame-panel) 40 fill / 40px / 0 stretch;
+  background: rgba(27, 40, 56, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }

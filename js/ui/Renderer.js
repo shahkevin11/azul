@@ -6,8 +6,9 @@ import { PatternLine } from '../engine/PatternLine.js';
 import { GameRules } from '../engine/GameRules.js';
 
 export class Renderer {
-  constructor(gameApp) {
+  constructor(gameApp, themeManager = null) {
     this.app = gameApp;
+    this.themeManager = themeManager;
     this.gameContainer = document.getElementById('game-container');
     this.selectedSource = null;
     this.selectedColor = null;
@@ -57,8 +58,22 @@ export class Renderer {
 
     const settingsBtn = document.createElement('button');
     settingsBtn.className = 'score-bar__settings';
-    settingsBtn.textContent = '⚙️';
     settingsBtn.setAttribute('aria-label', 'Settings');
+
+    // Use image icon if available, fallback to emoji
+    const settingsIconUrl = this.themeManager?.getUrl('UI', 'iconSettings');
+    if (settingsIconUrl) {
+      const img = document.createElement('img');
+      img.className = 'score-bar__settings-img';
+      img.src = settingsIconUrl;
+      img.alt = 'Settings';
+      img.width = 24;
+      img.height = 24;
+      settingsBtn.appendChild(img);
+    } else {
+      settingsBtn.textContent = '⚙️';
+    }
+
     settingsBtn.onclick = () => this.app.toggleSettings();
     bar.appendChild(settingsBtn);
   }
@@ -332,7 +347,7 @@ export class Renderer {
       `;
       board.appendChild(header);
 
-      // Mini wall
+      // Mini wall — use tile classes for image support
       const miniWall = document.createElement('div');
       miniWall.className = 'mini-wall';
       for (let r = 0; r < 5; r++) {
@@ -341,6 +356,7 @@ export class Renderer {
           cell.className = 'mini-wall__cell';
           if (player.wall[r][c]) {
             cell.classList.add('mini-wall__cell--filled');
+            cell.classList.add(`tile--${player.wall[r][c]}`);
             cell.style.background = `var(--tile-${player.wall[r][c]})`;
           }
           miniWall.appendChild(cell);
@@ -430,10 +446,20 @@ export class Renderer {
     overlay.className = 'game-over-overlay';
     overlay.id = 'game-over-overlay';
 
-    const crown = document.createElement('div');
-    crown.className = 'game-over__crown';
-    crown.textContent = '👑';
-    overlay.appendChild(crown);
+    // Crown: use image if available, fallback to emoji
+    const crownUrl = this.themeManager?.getUrl('UI', 'iconCrown');
+    if (crownUrl) {
+      const crown = document.createElement('img');
+      crown.className = 'game-over__crown-img';
+      crown.src = crownUrl;
+      crown.alt = 'Crown';
+      overlay.appendChild(crown);
+    } else {
+      const crown = document.createElement('div');
+      crown.className = 'game-over__crown';
+      crown.textContent = '👑';
+      overlay.appendChild(crown);
+    }
 
     const title = document.createElement('h2');
     title.className = 'game-over__title';
@@ -494,10 +520,14 @@ export class Renderer {
     const overlay = document.createElement('div');
     overlay.className = 'round-overlay';
     overlay.id = 'round-overlay';
-    overlay.innerHTML = `
+
+    const banner = document.createElement('div');
+    banner.className = 'round-banner';
+    banner.innerHTML = `
       <div class="round-overlay__text">Round ${round}</div>
       <div class="round-overlay__sub">Get ready!</div>
     `;
+    overlay.appendChild(banner);
     document.body.appendChild(overlay);
 
     setTimeout(() => {

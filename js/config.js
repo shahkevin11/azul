@@ -38,6 +38,7 @@ export const SUMMER = {
 };
 
 export const ASSETS = {
+  BASE_PATH: './assets/',
   TILE_SETS: {
     classic: {
       blue: 'assets/tiles/classic/blue.png',
@@ -56,6 +57,44 @@ export const ASSETS = {
       red: 'assets/tiles/summer/red.png',
       wildGlow: 'assets/tiles/summer/wild-glow.png',
     }
+  },
+  BACKGROUNDS: {
+    gameBg: 'bg/game-bg.jpg',
+    lobbyBg: 'bg/lobby-bg.jpg',
+    gameBgTile: 'bg/game-bg-tile.png',
+    overlayTexture: 'bg/overlay-texture.png',
+  },
+  FRAMES: {
+    factory: 'frames/factory-frame.png',
+    board: 'frames/board-frame.png',
+    panel: 'frames/panel-frame.png',
+    centerPool: 'frames/center-pool-frame.png',
+    scoreBar: 'frames/score-bar-bg.png',
+    divider: 'frames/divider.png',
+  },
+  UI: {
+    logo: 'ui/logo-azul.png',
+    iconSettings: 'ui/icon-settings.png',
+    iconCrown: 'ui/icon-crown.png',
+    iconArrow: 'ui/icon-arrow-right.png',
+    btnStartBg: 'ui/btn-start-bg.png',
+    tileSlotEmpty: 'ui/tile-slot-empty.png',
+    tileSlotLegal: 'ui/tile-slot-legal.png',
+    tileSelectedGlow: 'ui/tile-selected-glow.png',
+    floorPenalty: 'ui/floor-penalty.png',
+    roundBanner: 'ui/round-banner.png',
+  },
+  SUMMER: {
+    starBoardBg: 'summer/star-board-bg.png',
+    decorationPillar: 'summer/decoration-pillar.png',
+    decorationStatue: 'summer/decoration-statue.png',
+    decorationWindow: 'summer/decoration-window.png',
+  },
+  ICONS: {
+    icon192: 'icons/icon-192.png',
+    icon512: 'icons/icon-512.png',
+    appleTouchIcon: 'icons/apple-touch-icon.png',
+    favicon: 'icons/favicon.png',
   },
   AUDIO: {
     tilePick: 'assets/audio/tile-pick.mp3',

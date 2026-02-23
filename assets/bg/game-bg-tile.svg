@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <rect width="512" height="512" fill="#0D1B2A"/>
+  <defs>
+    <pattern id="pt" width="64" height="64" patternUnits="userSpaceOnUse">
+      <rect width="64" height="64" fill="none"/>
+      <path d="M32 0L64 32L32 64L0 32Z" fill="none" stroke="rgba(255,255,255,0.025)" stroke-width="0.5"/>
+      <circle cx="32" cy="32" r="8" fill="none" stroke="rgba(255,255,255,0.02)" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="512" height="512" fill="url(#pt)"/>
+</svg>
