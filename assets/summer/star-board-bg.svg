@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800">
+  <rect width="800" height="800" fill="#0D1B2A"/>
+  <defs>
+    <g id="star">
+      <polygon points="0,-40 11,-13 40,-13 18,5 25,35 0,18 -25,35 -18,5 -40,-13 -11,-13" fill="none" stroke="#C9A84C" stroke-width="1" stroke-opacity="0.2"/>
+    </g>
+  </defs>
+  <use href="#star" x="400" y="400"/>
+  <use href="#star" x="400" y="200"/>
+  <use href="#star" x="573" y="300"/>
+  <use href="#star" x="573" y="500"/>
+  <use href="#star" x="400" y="600"/>
+  <use href="#star" x="227" y="500"/>
+  <use href="#star" x="227" y="300"/>
+  <line x1="400" y1="240" x2="400" y2="360" stroke="#C9A84C" stroke-width="0.5" stroke-opacity="0.15"/>
+  <line x1="400" y1="440" x2="400" y2="560" stroke="#C9A84C" stroke-width="0.5" stroke-opacity="0.15"/>
+  <line x1="430" y1="410" x2="543" y2="480" stroke="#C9A84C" stroke-width="0.5" stroke-opacity="0.15"/>
+  <line x1="370" y1="410" x2="257" y2="480" stroke="#C9A84C" stroke-width="0.5" stroke-opacity="0.15"/>
+  <line x1="430" y1="390" x2="543" y2="320" stroke="#C9A84C" stroke-width="0.5" stroke-opacity="0.15"/>
+  <line x1="370" y1="390" x2="257" y2="320" stroke="#C9A84C" stroke-width="0.5" stroke-opacity="0.15"/>
+</svg>

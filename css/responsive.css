@@ -96,3 +96,18 @@
     --score-bar-height: 40px;
   }
 }
+
+/* Image rendering quality */
+/* Very small screens: prioritize crispness */
+@media (max-width: 359px) {
+  .tile {
+    image-rendering: crisp-edges;
+  }
+}
+
+/* High-DPI screens: ensure sharp rendering */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .tile {
+    image-rendering: auto;
+  }
+}

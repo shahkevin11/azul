@@ -17,6 +17,9 @@ html {
 body {
   font-family: 'Source Sans 3', -apple-system, sans-serif;
   background-color: var(--bg-primary);
+  background-image: var(--bg-overlay-texture), var(--bg-pattern-tile);
+  background-size: 512px 512px, 512px 512px;
+  background-repeat: repeat;
   color: var(--text-primary);
   line-height: 1.5;
   min-height: 100dvh;
@@ -165,4 +168,33 @@ img {
   0% { transform: rotate(0deg) scale(1); }
   50% { transform: rotate(180deg) scale(0.8); }
   100% { transform: rotate(360deg) scale(1); }
+}
+
+/* Loading progress bar */
+.loading-bar {
+  width: 200px;
+  height: 4px;
+  background: var(--bg-surface);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+.loading-bar__fill {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, var(--accent-blue), var(--accent-gold));
+  border-radius: 2px;
+  transition: width 200ms var(--easing-smooth);
+}
+
+.loading-logo {
+  font-family: 'Cinzel', serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--accent-gold), #E8D5A3, var(--accent-gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 0.15em;
 }

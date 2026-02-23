@@ -68,6 +68,15 @@
   pointer-events: none;
 }
 
+.round-banner {
+  background-image: var(--ui-round-banner);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 32px 64px;
+  text-align: center;
+}
+
 .round-overlay__text {
   font-family: 'Cinzel', serif;
   font-size: 2.5rem;

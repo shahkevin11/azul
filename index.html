@@ -11,7 +11,12 @@
   <title>Azul — Board Game</title>
 
   <link rel="manifest" href="manifest.json">
-  <link rel="icon" type="image/png" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231565C0'/><text x='16' y='23' text-anchor='middle' fill='white' font-size='18' font-weight='bold' font-family='serif'>A</text></svg>">
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.svg">
+
+  <!-- Preload critical assets -->
+  <link rel="preload" as="image" href="assets/ui/logo-azul.svg">
+  <link rel="preload" as="image" href="assets/bg/lobby-bg.svg">
 
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/base.css">
@@ -24,10 +29,14 @@
 </head>
 <body>
   <div id="app">
-    <!-- Loading screen -->
+    <!-- Loading screen with progress bar -->
     <div class="loading-overlay" id="loading">
+      <div class="loading-logo">AZUL</div>
       <div class="loading-spinner"></div>
-      <span style="color: var(--text-secondary); font-size: 0.9rem;">Loading Azul...</span>
+      <div class="loading-bar">
+        <div class="loading-bar__fill" id="loading-bar-fill"></div>
+      </div>
+      <span id="loading-text" style="color: var(--text-secondary); font-size: 0.9rem;">Loading assets...</span>
     </div>
   </div>
 

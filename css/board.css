@@ -5,13 +5,19 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  background: var(--bg-primary);
+  background-color: var(--bg-primary);
+  background-image: var(--bg-overlay-texture), var(--bg-image-game);
+  background-size: 512px 512px, cover;
+  background-repeat: repeat, no-repeat;
+  background-position: center;
 }
 
 /* Score bar - always visible at top */
 .score-bar {
   height: var(--score-bar-height);
-  background: var(--bg-secondary);
+  background-color: var(--bg-secondary);
+  background-image: var(--frame-score-bar);
+  background-size: cover;
   border-bottom: 1px solid rgba(255,255,255,0.06);
   display: flex;
   align-items: center;
@@ -76,6 +82,12 @@
   padding: 4px 8px;
   flex-shrink: 0;
   color: var(--text-secondary);
+}
+
+.score-bar__settings-img {
+  width: 24px;
+  height: 24px;
+  display: block;
 }
 
 /* Main scrollable game area */
@@ -145,7 +157,11 @@
   width: var(--factory-size);
   height: var(--factory-size);
   border-radius: var(--factory-radius);
-  background: var(--bg-surface);
+  background-color: var(--bg-surface);
+  background-image: var(--frame-factory);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
   border: 2px solid rgba(255,255,255,0.08);
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -156,6 +172,12 @@
   box-shadow: var(--shadow-sm);
   transition: border-color var(--anim-fast);
   transform: translate(-50%, -50%);
+}
+
+body.images-loaded .factory {
+  background-color: transparent;
+  border: none;
+  padding: 16px;
 }
 
 .factory--empty {
@@ -176,7 +198,11 @@
   width: calc(var(--factory-size) * 1.3);
   height: calc(var(--factory-size) * 1.3);
   border-radius: 50%;
-  background: rgba(255,255,255,0.03);
+  background-color: rgba(255,255,255,0.03);
+  background-image: var(--frame-center-pool);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
   border: 2px dashed rgba(255,255,255,0.08);
   display: flex;
   flex-wrap: wrap;
@@ -185,6 +211,12 @@
   gap: 3px;
   padding: 12px;
   overflow: hidden;
+}
+
+body.images-loaded .center-pool {
+  background-color: transparent;
+  border: none;
+  padding: 20px;
 }
 
 .center-pool--has-tiles {
@@ -291,6 +323,18 @@
   color: var(--text-muted);
   font-size: 0.7rem;
   opacity: 0.4;
+}
+
+body.images-loaded .board-arrow__icon {
+  background-image: var(--ui-icon-arrow);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 16px;
+  height: 16px;
+  text-indent: -9999px;
+  overflow: hidden;
+  opacity: 0.6;
 }
 
 /* Wall grid (right side) */
@@ -414,7 +458,16 @@
 
 .mini-wall__cell--filled {
   opacity: 0.8;
+  background-size: cover;
+  background-position: center;
 }
+
+/* Mini wall cells use tile images when loaded */
+body.images-loaded .mini-wall__cell.tile--blue { background-image: var(--tile-blue-img); }
+body.images-loaded .mini-wall__cell.tile--yellow { background-image: var(--tile-yellow-img); }
+body.images-loaded .mini-wall__cell.tile--red { background-image: var(--tile-red-img); }
+body.images-loaded .mini-wall__cell.tile--black { background-image: var(--tile-black-img); }
+body.images-loaded .mini-wall__cell.tile--white { background-image: var(--tile-white-img); }
 
 /* Mini floor line */
 .mini-floor {
@@ -450,6 +503,13 @@
 
 .game-over__crown {
   font-size: 4rem;
+  margin-bottom: 8px;
+  animation: crownBounce 0.8s var(--easing-bounce);
+}
+
+.game-over__crown-img {
+  width: 96px;
+  height: 96px;
   margin-bottom: 8px;
   animation: crownBounce 0.8s var(--easing-bounce);
 }
